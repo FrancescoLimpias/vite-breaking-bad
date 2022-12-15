@@ -18,7 +18,7 @@ export default {
 </script>
 
 <template>
-  <div class="container">
+  <div class="pager appmain">
 
     <!-- Enum div (shows number of characters found) -->
     <div class="enum">
@@ -41,10 +41,8 @@ export default {
 <style lang="scss" scoped>
 @use '../styles/partials/_palette.scss';
 
-.container {
+.appmain {
   background-color: white;
-  max-width: 1270px;
-  margin: 0 auto;
   padding: 2rem;
   .enum {
     background-color: palette.$secondary;

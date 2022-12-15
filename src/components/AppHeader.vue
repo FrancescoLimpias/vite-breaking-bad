@@ -16,6 +16,7 @@ export default {
 
 <style lang="scss" scoped>
 h1 {
+  padding: .5rem;
   color: white;
 }
 </style>

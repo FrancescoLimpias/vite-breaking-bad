@@ -8,7 +8,7 @@ export default {
 </script>
 
 <template>
-    <div class="container">
+    <div class="charcard">
         <img :src="char.image" alt="">
         <h4 class="name">
             {{char.name}}
@@ -22,7 +22,7 @@ export default {
 <style lang="scss" scoped>
 @use "../styles/partials/_palette.scss";
 
-.container{
+.charcard{
 
     background-color: palette.$primary;
     text-align: center;
