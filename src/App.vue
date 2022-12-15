@@ -1,29 +1,54 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+
+// Imported components
+import AppHeader from './components/AppHeader.vue'
+import AppMain from './components/AppMain.vue'
+// Imported JS
+import axios, { isCancel, AxiosError } from 'axios';
+import { store } from "./store.js"
+
+export default {
+
+  // Registered components
+  components: {
+    AppHeader,
+    AppMain,
+  },
+
+  // App Data
+  data() {
+    return {
+      store,
+      title: "Breaking Bad API",
+      remoteURL: "https://rickandmortyapi.com/api/character",
+    };
+  },
+
+  mounted() {
+
+    // Fetch characters data
+    axios
+      .get(this.remoteURL)
+      .then((res) => {
+        store.characters = res.data.results;
+      })
+      .catch((err) => {
+        console.log("Yo man that's not cool");
+      });
+  },
+}
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <AppHeader :title="title" />
+  <AppMain />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+<style lang="scss">
+@use "styles/general.scss";
+@use "styles/partials/_palette.scss";
+
+body {
+  background-color: palette.$primary;
 }
 </style>
